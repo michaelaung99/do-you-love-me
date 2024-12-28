@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Do You Love Me Ria?🥺</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      flex-direction: column; 
+    }
+
+    h1 {
+      text-align: center;
+      font-family: 'Dancing Script', cursive;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 5px;
+    }
+
+    #yesBtn, #noBtn {
+      display: inline-block;
+      margin: 0 15px; 
+    }
+
+    #noBtn {
+      background-color: #FF0000;
+      color: white;
+      position: absolute; 
+    }
+
+    #yesBtn {
+      background-color: #00FF00;
+      color: white;
+    }
+
+    #angryEmoji {
+      width: 50px;
+      height: 50px;
+      position: absolute; 
+      display: none; 
+    }
+  </style>
+</head>
+<body>
+  <h1 id="message">Do You Love Me Ria?🥺</h1>
+  <div id="buttonContainer"> <!-- Added the id "buttonContainer" here -->
+    <button id="yesBtn">❤️ Yes ❤️</button>
+    <button id="noBtn">❌ No ❌</button>
+  </div>
+  <img id="angryEmoji" src="angry_emoji.png" style="display: none;"> 
+
+  <script>
+    const noBtn = document.getElementById('noBtn');
+    const angryEmoji = document.getElementById('angryEmoji');
+    const message = document.getElementById('message');
+    const buttonContainer = document.getElementById('buttonContainer'); // Now referring to the div with buttons
+
+    function moveNoButton() {
+      const maxX = window.innerWidth - noBtn.offsetWidth - 20; // Add some margin
+      const maxY = window.innerHeight - noBtn.offsetHeight - 20; 
+      const newX = Math.floor(Math.random() * maxX);
+      const newY = Math.floor(Math.random() * maxY);
+
+      noBtn.style.left = newX + 'px';
+      noBtn.style.top = newY + 'px';
+    }
+
+    noBtn.addEventListener('click', () => {
+      moveNoButton(); 
+
+      angryEmoji.style.display = 'block';
+      angryEmoji.style.left = (noBtn.offsetLeft + noBtn.offsetWidth) + 'px'; 
+      angryEmoji.style.top = noBtn.offsetTop + 'px'; 
+
+      noBtn.textContent = '😡 Think Again! 👊'; 
+    });
+
+    const yesBtn = document.getElementById('yesBtn');
+    yesBtn.addEventListener('click', () => {
+      message.textContent = 'I love you too.PALANGGA TA KA RIA💖🥰';
+      buttonContainer.style.display = 'none'; // This will now hide the buttons
+    });
+  </script>
+</body>
+</html>
